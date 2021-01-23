@@ -8,7 +8,7 @@ public class Ex_1MemberMain {
 		
 		M_Company co = new M_Company();
 		M_Employee em = new M_Employee();
-		M_Member me = new M_Member();
+		M_CtrlMember ctrl = new M_CtrlMember();
 		
 		Scanner sc = new Scanner(System.in);
 		
@@ -24,7 +24,7 @@ public class Ex_1MemberMain {
 			String choice = sc.nextLine();
 			switch (choice) {
 			case "1":
-				
+				ctrl.getSignIn(sc);
 				break;
 
 			default:
