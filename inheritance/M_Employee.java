@@ -1,10 +1,9 @@
 /*
  	Introduction
- 	1. Member를 조상클래스로 받고 private 속성 하나를 또 추가한다
+ 	1. Member를 조상클래스로 받고 private 속성 하나(jubun)를 또 추가한다
+ 	2. getter와 setter를 이용하기 
  	// 추가 속성값 주번은 null이나 공백값이 아니여야 하며, 주민등록번호 앞 7자리가 입력될 수 있도록 정규표현식을 이용한다
- 	2. getter와 setter를 이용하기
- 	3.
- 	
+ 		
  */
 
 package inheritance;
@@ -15,6 +14,8 @@ import java.util.regex.Pattern;
 
 public class M_Employee extends M_Member {
 
+	public static int ecount;
+	
 	private String jubun;
 
 	public String getJubun() {
@@ -36,7 +37,7 @@ public class M_Employee extends M_Member {
 					+ "주민등록번호는 앞에서부터 7자리만 입력해주세요!!");
 	}
 	
-	public void signIn(Scanner sc) {
+	public void signEmployee(Scanner sc) {
 		System.out.print("\n** 구직자 회원가입 **\n"
 				+ "1. 아이디 : ");
 		setId(sc.nextLine());
@@ -46,6 +47,19 @@ public class M_Employee extends M_Member {
 		setName(sc.nextLine());
 		System.out.print("4. 주민등록번호 앞  7자리 : ");
 		setJubun(sc.nextLine());
-		
+	}
+	
+	@Override
+	public void showAll() {
+		System.out.println("\n1. 아이디 : "+getId()+"\n"
+				          +"2. 암호 : "+getPasswd()+"\n"
+					      +"3. 성명 : "+getName()+"\n"
+					      +"4. 주민등록번호 앞 7자리 : "+getJubun());
 	}
 }
+/*
+System.out.println("1. 아이디 : "+getId()+"\n"
+        +"2. 암호 : "+getPasswd()+"\n"
+	      +"3. 성명 : "+getName()+"\n"
+	      +"4. 주민등록번호 앞 7자리 : "+getJubun()+"\n");
+*/
