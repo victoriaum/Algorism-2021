@@ -8,13 +8,11 @@
 
 package inheritance;
 
-import java.util.Scanner;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.*;
+import java.util.regex.*;
 
 public class M_Employee extends M_Member {
-
-	public static int ecount;
+	
 	
 	private String jubun;
 
@@ -37,18 +35,6 @@ public class M_Employee extends M_Member {
 					+ "주민등록번호는 앞에서부터 7자리만 입력해주세요!!");
 	}
 	
-	public void signEmployee(Scanner sc) {
-		System.out.print("\n** 구직자 회원가입 **\n"
-				+ "1. 아이디 : ");
-		setId(sc.nextLine());
-		System.out.print("2. 비밀번호 : ");
-		setPasswd(sc.nextLine());
-		System.out.print("3. 성명 : ");
-		setName(sc.nextLine());
-		System.out.print("4. 주민등록번호 앞  7자리 : ");
-		setJubun(sc.nextLine());
-	}
-	
 	@Override
 	public void showAll() {
 		System.out.println("\n1. 아이디 : "+getId()+"\n"
@@ -57,9 +43,3 @@ public class M_Employee extends M_Member {
 					      +"4. 주민등록번호 앞 7자리 : "+getJubun());
 	}
 }
-/*
-System.out.println("1. 아이디 : "+getId()+"\n"
-        +"2. 암호 : "+getPasswd()+"\n"
-	      +"3. 성명 : "+getName()+"\n"
-	      +"4. 주민등록번호 앞 7자리 : "+getJubun()+"\n");
-*/

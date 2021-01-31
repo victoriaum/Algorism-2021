@@ -21,17 +21,18 @@ public class Ex_1MemberMain {
 		
 		Scanner sc = new Scanner(System.in);
 		
-		M_Company[] coArr = new M_Company[5];
 		M_Employee[] emArr = new M_Employee[5];
+		M_Company[] coArr = new M_Company[5];
 		M_CtrlMember ctrl = new M_CtrlMember();
 		
-		M_Employee em1 = new M_Employee();
-		em1.setId("abc");
-		em1.setPasswd("123qerAW---");
-		em1.setName("고구마");
-		em1.setJubun("9712121");
-		emArr[0] = em1;
-		em1.ecount++;
+		
+		M_Employee em = new M_Employee();	
+		em.setId("abc");
+		em.setPasswd("123qerAW---");
+		em.setName("고구마");
+		em.setJubun("9712121");
+		emArr[0] = em;
+		em.ecount++;
 		
 		M_Employee em2 = new M_Employee();
 		em2.setId("def");
@@ -41,22 +42,25 @@ public class Ex_1MemberMain {
 		emArr[1] = em2;
 		em2.ecount++;
 		
-		M_Company co1 = new M_Company();
-		co1.setId("CJE&M");
-		co1.setPasswd("q3weAD8+8");
-		co1.setName("CJ");
-		co1.setJobType("방송통신업");
-		coArr[0] = co1;
-		co1.ccount++;
+		M_Company co = new M_Company();
+		co.setId("CJE&M");
+		co.setPasswd("q3weAD8+8");
+		co.setName("CJ");
+		co.setJobType("방송통신업");
+		co.setSeedMoney(1000000000);
+		coArr[0] = co;
+		co.ccount++;
 		
 		M_Company co2 = new M_Company();
 		co2.setId("Microsoft");
 		co2.setPasswd("q3wefgA+8");
 		co2.setName("Microsoft");
 		co2.setJobType("IT");
+		co2.setSeedMoney(8000000);
 		coArr[1] = co2;
 		co2.ccount++;
 
+		String choice = "";
 				
 		do {
 			System.out.println("\n=====  >>  메인메뉴  <<  ======== \n" + 
@@ -65,14 +69,27 @@ public class Ex_1MemberMain {
 								"5. 모든 구직자 출력   6. 모든 구인회사 출력 \n"+ 
 								"7. 로그아웃              8. 프로그램 종료\n");
 			System.out.print("▷ 메뉴를 선택해주세요 => ");
-			String choice = sc.nextLine();
+			choice = sc.nextLine();
+			
 			switch (choice) {
 			case "1":
 				ctrl.signInEmloyee(sc, emArr);
+				em.ecount++;
+				System.out.println("구직자 회원가입 성공!!");
 				break;
 				
 			case "2":
 				ctrl.signInCompany(sc, coArr);
+				co.ccount++;
+				System.out.println("구인회사 회원가입 성공!!");
+				break;
+				
+			case "3":
+				ctrl.loginEmployee(sc, emArr);
+				break;
+				
+			case "4":
+				ctrl.loginCompany(sc, coArr);
 				break;
 				
 			case "5":
@@ -86,7 +103,7 @@ public class Ex_1MemberMain {
 			default:
 				break;
 			}
-		} while (true);
+		} while (choice.equals("8"));
 		
 		
 	}
