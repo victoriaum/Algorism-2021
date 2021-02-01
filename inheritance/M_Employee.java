@@ -8,7 +8,6 @@
 
 package inheritance;
 
-import java.util.*;
 import java.util.regex.*;
 
 public class M_Employee extends M_Member {

@@ -147,12 +147,13 @@ public class M_CtrlMember {
 		}
 	}
 	
+	M_Employee emDB = null;
+	M_Company coDB = null;
 	
-	public void loginEmployee(Scanner sc, M_Employee[] emArr) {
+	public M_Employee loginEmployee(Scanner sc, M_Employee[] emArr) {
 		
 		System.out.println("\n** 구직자 로그인 **\n");
 
-		login :
 		do {
 		System.out.print("1. 아이디 : ");
 		String id = sc.nextLine();
@@ -164,7 +165,7 @@ public class M_CtrlMember {
 				if(passwd.equals(emArr[i].getPasswd())) {
 						System.out.println("\n"+emArr[i].getName()+" 님으로 로그인되었습니다!");
 						emArr[i].showAll();
-						break login;
+						return emDB = emArr[i];
 				} else
 					System.out.println("암호가 잘못되었습니다. 다시 입력해주세요!");
 			} else 
@@ -174,11 +175,10 @@ public class M_CtrlMember {
 	}
 	
 	
-	public void loginCompany(Scanner sc, M_Company[] coArr) {
+	public M_Company loginCompany(Scanner sc, M_Company[] coArr) {
 		
 		System.out.println("\n** 구인회사 로그인 **\n");
 
-		login :
 		do {
 		System.out.print("1. 아이디 : ");
 		String id = sc.nextLine();
@@ -190,7 +190,7 @@ public class M_CtrlMember {
 				if(passwd.equals(coArr[i].getPasswd())) {
 						System.out.println("\n"+coArr[i].getName()+" 님으로 로그인되었습니다!");
 						coArr[i].showAll();
-						break login;
+						return coDB = coArr[i];
 				} else
 					System.out.println("암호가 잘못되었습니다. 다시 입력해주세요!");
 			} else 
@@ -199,4 +199,14 @@ public class M_CtrlMember {
 		} while(true);
 	}
 	
+	
+	public void logout(M_Employee[] emArr, M_Company[] coArr) {
+		if(emDB!=null) {
+			System.out.println(emDB.getName()+"님이 로그아웃 되었습니다.");
+			emDB = null;
+		} else {
+			System.out.println(coDB.getName()+"로그아웃 되었습니다.");
+			coDB = null;
+		}
+	}
 }
