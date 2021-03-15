@@ -12,17 +12,19 @@ public class bookDTO {
 	private String authorname;    
 	private String publishcom;    
 	private String price;         
+	
 	private String status;
+	private String bookqty;
 	
 	
 	// book_rent
 	private String rentseq;       //대여번호    
-	private String userseq;       //  회원번호        
+	private String usersid;       //  회원번호        
 	private String rentday;       // 대여일자
 	private String returnday;     // 반납예정일
 	private String rentstatus ;   // 1이면 미반납, 0이면 반납
 	
-	
+	private String delayFee ;   // 연체료
 	
 	private userDTO user;
 	
@@ -95,11 +97,11 @@ public class bookDTO {
 	public void setRentseq(String rentseq) {
 		this.rentseq = rentseq;
 	}
-	public String getUserseq() {
-		return userseq;
+	public String getUserid() {
+		return usersid;
 	}
-	public void setUserseq(String userseq) {
-		this.userseq = userseq;
+	public void setUserid(String usersid) {
+		this.usersid = usersid;
 	}
 	public String getRentday() {
 		return rentday;
@@ -120,14 +122,33 @@ public class bookDTO {
 		this.rentstatus = rentstatus;
 	}
 	
-	
-	
-	
 	public userDTO getUser() {
 		return user;
 	}
 	public void setUser(userDTO user) {
 		this.user = user;
+	}
+	
+	public String getBookqty() {
+		return bookqty;
+	}
+	public void setBookqty(String bookqty) {
+		this.bookqty = bookqty;
+	}
+	public String getUsersid() {
+		return usersid;
+	}
+	public void setUsersid(String usersid) {
+		this.usersid = usersid;
+	}
+	
+	
+	
+	public String getDelayFee() {
+		return delayFee;
+	}
+	public void setDelayFee(String delayFee) {
+		this.delayFee = delayFee;
 	}
 	
 }

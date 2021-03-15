@@ -2,7 +2,7 @@ package bookrental;
 
 import java.sql.*;
 import java.util.*;
-import java.util.*;
+
 
 
 public class userDAO implements interUserDAO{
@@ -115,11 +115,62 @@ public class userDAO implements interUserDAO{
 	      }
 	      
 	     return udto;
-	      
-	      
 	   }
 
+
+		// 회원id가 존재하는지 체크하는 메소드
+		@Override
+		public boolean checkUserid(String userid) {
+			boolean b = false;
+			
+			try {
+	         conn = ProjectDBConnection.getConn();
+	         
+	         String sql = "select userid "+
+	                      "from lib_member "+
+	                      "where userid = ? ";
+	         
+	         pstmt = conn.prepareStatement(sql);
+	         pstmt.setString(1, userid);
+	         
+	         rs = pstmt.executeQuery();
+	         
+	         if(rs.next()) {
+	        	b=true;
+	         }
+		         
+		     }catch(SQLException e) {
+		    	  System.out.println("SQL 구문이 잘못되었습니다");
+		     }finally {
+		    	  close();
+		     }
+			
+			return b;
+		}
+
 	
-	   
+		   // 회원 탈퇴 메소드
+	      @Override
+	      public int leaveMember(Map<String, String> paraMap) {
+	         int result = 0;
+	         
+	         try {
+	              conn = ProjectDBConnection.getConn();
+	              
+	              String sql = " delete from lib_member "
+	                         + " where userid = ? and totalrent=0 ";
+	                 
+	              pstmt = conn.prepareStatement(sql);
+	              pstmt.setString(1, paraMap.get("userid"));
+
+	              result = pstmt.executeUpdate();
+	           
+	         } catch (SQLException e) { 
+	              e.printStackTrace();
+	         } finally {
+	            close();
+	         }      
+	         return result;
+	      }
 
 	}
